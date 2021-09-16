@@ -1,13 +1,13 @@
 const supertest = require('supertest')
 const server = require('./server')
 
-test('server.js', async () => {
-
-    // beforeEach(async () => {
-    //     await db('refugees').truncate()
-    // })
-
-    const res = await supertest(server).get('/')
+test('server.js', async () => { 
+    const request = supertest(server)
+    const res= await request.get('/')
     expect(res.status).toBe(200)
-    expect(res.type).toBe('text/html')
 })
+
+
+
+
+

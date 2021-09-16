@@ -1,4 +1,4 @@
-const request = require('supertest')
+const supertest = require('supertest')
 const server = require('../server')
 const db = require('../data/db-config')
 const Stories = require('./stories-model')
@@ -12,17 +12,15 @@ describe('Stories Router', () => {
     // get /
     describe('Get all the stories', () => {
 
-        it('should return a status code of 200', () => {
+        it('should return a status code of 200', async () => {
             const expectedCode = 200
-            let response
-            request(server).get('/api/stories').then(res => {
-                response = res
-                expect(response.status).toBe(expectedCode)
-                expect(res.type).toBe('application/json')
-                expect(res.body).toEqual([])
-            })
-        })
-    })
+            const request = supertest(server)
+            const response = await request.get('/api/stories')
+            expect(response.statusCode).toBe(expectedCode)
 
-  
-})
+        })
+        })
+        })
+        
+
+
